@@ -3,7 +3,11 @@
 
 import flask
 from flask import jsonify
-from flask_json import app, db
+import flask_json
+from flask_json import database
+
+app = flask_json.get_app()
+db = database.get_database(app)
 
 @app.route('/')
 def top():

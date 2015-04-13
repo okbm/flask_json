@@ -31,7 +31,7 @@ insert into user values (null,'test',now());
 ```
 
 ```bash
-$ echo "flask_json:password" > ./flask_json/models/dbauth
+$ echo "flask_json:password" > ./flask_json/dbauth
 ```
 
 ### 2. Install Libraries
@@ -52,8 +52,9 @@ $ python run.py
 ブラウザでhttp://localhost:5000 を開く
 
 ## TODO
-- [ ] precommitでテスト走らせる
 - [ ] SQLAlchemy使ってcreate tableを走らせる
+  - model用意してあげないとダメ
+- [ ] precommitでコーディング規約のチェック走らせる
 - [ ] WSGIで動かせるように
 - [ ] fablicでデプロイする
 - [ ] traviceCIとか使って回す
