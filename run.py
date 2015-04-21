@@ -4,10 +4,8 @@
 import flask
 from flask import jsonify
 import flask_json
-from flask_json import database
-
-app = flask_json.get_app()
-db = database.get_database(app)
+from flask_json import app, database
+from flask_json.models.User import *
 
 @app.route('/')
 def top():
@@ -23,10 +21,13 @@ def sample_json():
 @app.route('/sql')
 def sample_sql():
     """json + mysql"""
-    conn = db.connect()
-    result = conn.execute("select * from user")
+    users = User.query.all()
 
-    return jsonify(result.first())
+    result = {}
+    for user in users:
+        result[user.id] = user.name
+
+    return jsonify(result)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

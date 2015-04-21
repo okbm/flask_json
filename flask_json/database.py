@@ -4,6 +4,9 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
+from flask.ext.sqlalchemy import SQLAlchemy
+
+from flask_json import app
 
 def get_local_db_conf():
     path = os.path.dirname(os.path.abspath(__file__))
@@ -15,11 +18,8 @@ def get_local_db_conf():
 
 def get_database(app):
     PUBLIC_MYSQL_URI = 'mysql+pymysql://{}:{}@localhost/flask_json?charset=utf8'
-    app.logger.debug(PUBLIC_MYSQL_URI)
     DATABASE = PUBLIC_MYSQL_URI.format(*get_local_db_conf())
     engine = create_engine(DATABASE, pool_recycle=3600)
     return engine
 
-def create_session(db):
-    session = scoped_session(sessionmaker(bind=db))
-    return session
+db = SQLAlchemy(app)
