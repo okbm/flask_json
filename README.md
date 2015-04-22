@@ -39,11 +39,6 @@ $ echo "flask_json:password" > ./flask_json/dbauth
 $ pip install -r requirements.txt -r requirements-dev.txt
 ```
 
-### 3. Create Tables
-```bash
-$ python flask/scripts/schema.py database
-```
-
 ## RUN
 ```bash
 $ python run.py
@@ -52,8 +47,6 @@ $ python run.py
 ブラウザでhttp://localhost:5000 を開く
 
 ## TODO
-- [ ] SQLAlchemy使ってcreate tableを走らせる
-  - model用意してあげないとダメ
 - [ ] precommitでコーディング規約のチェック走らせる
 - [ ] WSGIで動かせるように
 - [ ] fablicでデプロイする
