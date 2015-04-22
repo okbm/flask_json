@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import flask
-from flask import jsonify
 import flask_json
+from flask import jsonify, Response
 from flask_json import app, database
 from flask_json.models.User import *
+
+import requests
 
 @app.route('/')
 def top():
@@ -28,6 +30,11 @@ def sample_sql():
         result[user.id] = user.name
 
     return jsonify(result)
+
+@app.route('/dummy_image')
+def cat_generator():
+    response = requests.get('http://placekitten.com/g/200/300')
+    return Response(response.content, headers={'Content-Type': 'image/jpeg'})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
