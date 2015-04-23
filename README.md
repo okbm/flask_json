@@ -16,10 +16,9 @@
 ### 1. Create Database Auth File
 ```sql
 CREATE DATABASE flask_json DEFAULT character set=utf8;
-CREATE USER 'flask_json'@localhost IDENTIFIED BY 'password'
+CREATE USER 'flask_json'@localhost IDENTIFIED BY 'password';
 GRANT ALL ON flask_json.* TO flask_json;
 
-# dummy あとで消す
 CREATE TABLE `user` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
     `name` varchar(255) DEFAULT NULL,
