@@ -18,6 +18,7 @@
 CREATE DATABASE flask_json DEFAULT character set=utf8;
 CREATE USER 'flask_json'@localhost IDENTIFIED BY 'password';
 GRANT ALL ON flask_json.* TO flask_json;
+use flask_json
 
 CREATE TABLE `user` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -40,14 +41,15 @@ $ pip install -r requirements.txt -r requirements-dev.txt
 
 ## RUN
 ```bash
-$ python run.py
+$ uwsgi misc/uwsgi/uwsgi_local.ini
 ```
 
-ブラウザでhttp://localhost:5000 を開く
+## other
+### deploy
+```
+$ deploy vagrant setup
+$ deploy vagrant
+```
 
 ## TODO
-- [ ] precommitでコーディング規約のチェック走らせる
-- [ ] WSGIで動かせるように
-- [ ] fablicでデプロイする
-- [ ] traviceCIとか使って回す
-
+- [ ]デプロイはあとで見直す
